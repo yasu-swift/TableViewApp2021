@@ -14,17 +14,17 @@ class AddListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let userDefaults = UserDefaults.standard
+        if userDefaults.object(forKey: "add") != nil {
+            taskArray = userDefaults.object(forKey: "add") as! [String]
+        }
         // Do any additional setup after loading the view.
     }
     
     @IBAction func addButton(_ sender: Any) {
         let userDefaults = UserDefaults.standard //そのままだと長いので変数にいれる
-        
         taskArray.append(addText.text!) //TextFieldで記入されたテキストを入れる
-        
         userDefaults.set(taskArray, forKey: "add") //キー"add"で配列をUserDefaultsに保存
-        
         self.navigationController?.popViewController(animated: true) //1つ前の画面に戻る
     }
     

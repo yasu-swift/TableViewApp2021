@@ -8,6 +8,7 @@
 import UIKit
 
 class TableViewController: UITableViewController {
+    var taskArray: [String] = []
     
     // 画面内に表示する名前を入れています。
     var names: [String] = [
@@ -25,12 +26,28 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    // 繰り返し処理する
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let userDefaults = UserDefaults.standard
+        
+        //"add"というキーで保存された値がなにかある -> 値をtaskArrayへ
+        if userDefaults.object(forKey: "add") != nil {
+            taskArray = userDefaults.object(forKey: "add") as! [String]
+        }
+        //tableViewを更新
+        tableView.reloadData()
+    }
+    
+    
+    // スワイプ削除
+    func tableView(tableView: UITableView,canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    {
+        return true
+    }
+
     
     // MARK: - Table view data source
     
@@ -44,7 +61,7 @@ class TableViewController: UITableViewController {
         
         // 今回はセクションは1つのみなので、namesの要素数をそのまま使います。
         // "変数名.count"で要素数を取得できます。
-        return names.count
+        return taskArray.count
     }
     
     
@@ -55,7 +72,7 @@ class TableViewController: UITableViewController {
         
         // namesから該当する行の文字列を取得してセルに設定します。
         // indexPath.rowで何行目かがわかります。
-        cell.textLabel?.text = names[indexPath.row]
+        cell.textLabel?.text = taskArray[indexPath.row]
         
         return cell
     }
