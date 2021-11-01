@@ -41,7 +41,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ImO-Dc-d23">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="Fmm-Nk-qJ2">
+                        <barButtonItem key="leftBarButtonItem" title="戻る" id="7SY-bK-ROq">
+                            <connections>
+                                <action selector="backButton:" destination="wd8-bU-J0X" id="b9x-h1-yl6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="追加" id="Fmm-Nk-qJ2">
                             <connections>
                                 <action selector="addButton:" destination="wd8-bU-J0X" id="9wU-hQ-ntQ"/>
                                 <segue destination="Il2-I8-prl" kind="show" id="7Eu-gb-r12"/>
@@ -61,15 +66,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aai-fF-6kL">
-                                <rect key="frame" x="50" y="138" width="314" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aai-fF-6kL">
+                                <rect key="frame" x="50" y="338.5" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXU-TZ-yuI">
-                                <rect key="frame" x="173.5" y="222" width="67" height="31"/>
+                                <rect key="frame" x="180.5" y="432.5" width="53" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="追加"/>
                                 <connections>
                                     <action selector="addButton:" destination="Il2-I8-prl" eventType="touchUpInside" id="RAJ-f8-Psg"/>
                                 </connections>
@@ -78,14 +83,20 @@
                         <viewLayoutGuide key="safeArea" id="SnP-Ur-t9d"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="LXU-TZ-yuI" firstAttribute="top" secondItem="Aai-fF-6kL" secondAttribute="bottom" constant="60" id="4Oh-aM-pPB"/>
                             <constraint firstItem="SnP-Ur-t9d" firstAttribute="trailing" secondItem="Aai-fF-6kL" secondAttribute="trailing" constant="50" id="FO9-QQ-7Wz"/>
                             <constraint firstItem="Aai-fF-6kL" firstAttribute="leading" secondItem="SnP-Ur-t9d" secondAttribute="leading" constant="50" id="Mx6-Pz-nW3"/>
-                            <constraint firstItem="LXU-TZ-yuI" firstAttribute="centerX" secondItem="x6e-Fb-Zq9" secondAttribute="centerX" id="fPT-Q2-v8Z"/>
-                            <constraint firstItem="Aai-fF-6kL" firstAttribute="top" secondItem="SnP-Ur-t9d" secondAttribute="top" constant="50" id="iXK-In-2qz"/>
-                            <constraint firstItem="LXU-TZ-yuI" firstAttribute="top" secondItem="Aai-fF-6kL" secondAttribute="bottom" constant="50" id="pcW-HQ-lwB"/>
+                            <constraint firstItem="LXU-TZ-yuI" firstAttribute="centerY" secondItem="x6e-Fb-Zq9" secondAttribute="centerY" id="RKI-XU-gVa"/>
+                            <constraint firstItem="LXU-TZ-yuI" firstAttribute="centerX" secondItem="x6e-Fb-Zq9" secondAttribute="centerX" id="caW-Zs-UrZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Agw-AE-FtH"/>
+                    <navigationItem key="navigationItem" id="Agw-AE-FtH">
+                        <barButtonItem key="leftBarButtonItem" title="戻る" id="PQe-11-WGY">
+                            <connections>
+                                <action selector="backButton:" destination="Il2-I8-prl" id="bj2-dA-4zf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addText" destination="Aai-fF-6kL" id="0Go-Y2-rJp"/>
                     </connections>
@@ -122,7 +133,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="wd8-bU-J0X" kind="show" id="OL2-iH-VqM"/>
+                                            <segue destination="wd8-bU-J0X" kind="show" id="0ml-Ja-RBs"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="1qF-Yw-iEP" style="IBUITableViewCellStyleDefault" id="Ubp-1A-S3y">
