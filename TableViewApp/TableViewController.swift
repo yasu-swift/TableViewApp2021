@@ -25,7 +25,7 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
     
     // 繰り返し処理する
@@ -43,13 +43,13 @@ class TableViewController: UITableViewController {
     
     
     // スワイプ削除
-    func tableView(tableView: UITableView,canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
-    {
-        return true
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        taskArray.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(taskArray, forKey: "add")
     }
-
-    
-    // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -81,6 +81,11 @@ class TableViewController: UITableViewController {
     @IBAction func addButton(_ sender: Any) {
         
     }
+    
+    @IBAction func backButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true) //1つ前の画面に戻る
+    }
+    
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
